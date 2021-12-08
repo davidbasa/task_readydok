@@ -16,8 +16,6 @@ class RelasiFactory extends Factory
         return [
             'dokter_id'=> $this->faker->randomDigitNot(0),
             'klinik_id'=> $this->faker->randomDigitNot(0),
-
-            
         ];
     }
 }

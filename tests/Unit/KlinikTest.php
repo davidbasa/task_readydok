@@ -14,34 +14,37 @@ class KlinikTest extends TestCase
      */
     public function test_example()
     {
-        // //correct get
-        // $response = $this->json('GET', '/api/klinik/1');
-        // $response
-        //     ->assertStatus(200)
-        //     ->assertJson(['id'=>1, 'name' => 'Gleichner Group', 'description'=> 'Et necessitatibus nobis architecto sit aut dolor a. Quia deserunt sequi consequatur est consequatur adipisci.']);  
 
-        // //false get 
-        // $response = $this->json('GET', '/api/klinik/100');
-        // $response
-        //     ->assertStatus(200)
-        //     ->assertJson(['message' => 'Clinic Not Found']);  
-
-        // //create Klinik
-        // $response = $this->json('POST', '/api/klinik', ['name' => 'David', 'description'=> 'uyghfbsedukfy']);
-        // $response
-        //     ->assertStatus(200)
-        //     ->assertExactJson(['created' => true,]);
+        //create Klinik
+        $response = $this->json('POST', '/api/klinik', ['name' => 'David', 'description'=> 'uyghfbsedukfy']);
+        $response
+            ->assertStatus(200)
+            ->assertExactJson(['created' => true,]);
         
-        // //update Klinik
-        // $response = $this->json('PUT', '/api/klinik/3', ['name' => 'Surya', 'description'=> "Et necessitatibus nobis architecto sit aut dolor a. Quia deserunt"]);
-        // $response
-        //     ->assertStatus(200)
-        //     ->assertExactJson(['updated' => true,]);
+        //update Klinik
+        $response = $this->json('PUT', '/api/klinik/3', ['name' => 'Surya', 'description'=> "Et necessitatibus nobis architecto sit aut dolor a. Quia deserunt"]);
+        $response
+            ->assertStatus(200)
+            ->assertExactJson(['updated' => true,]);
+        
+        //correct get
+        $response = $this->json('GET', '/api/klinik/11');
+        $response
+            ->assertStatus(200)
+            ->assertJson(['id'=>11, 'name' => 'David', 'description'=> 'uyghfbsedukfy']);  
 
-        // //delete Klinik
-        // $response = $this->json('DELETE', '/api/klinik/7');
-        // $response
-        //     ->assertStatus(200)
-        //     ->assertExactJson(['deleted' => true,]);
+        //false get 
+        $response = $this->json('GET', '/api/klinik/100');
+        $response
+            ->assertStatus(200)
+            ->assertJson(['message' => 'Clinic Not Found']);  
+
+
+        //delete Klinik
+        $response = $this->json('DELETE', '/api/klinik/6');
+        $response
+            ->assertStatus(200)
+            ->assertExactJson(['deleted' => true,]);
+
     }
 }
